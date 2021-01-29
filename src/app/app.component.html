@@ -1,0 +1,26 @@
+<h1>Chat App</h1>
+<h4> Enter your name, font color, and message:</h4>
+
+<br>
+<div *ngFor="let temp of messageArray" class="messages">
+  <span class="span2" [style.color]="temp.color">{{temp.user}} </span>
+  <span class="span3" [style.color]="temp.color">{{temp.message}}</span>
+  <br>
+  <span class="span1">{{temp.timeStamp.toDate() | date:"medium"}}: </span>
+</div>
+
+<div class="user-input" id="navbar">
+  <label>Name: </label>
+  <input class="inputName" [(ngModel)]="user" (keyup)="handleUser()">
+  <label> Color: </label>
+  <input class="color-input" [(ngModel)]="color" (colorPickerClose)="handleColor()" [(colorPicker)]="color" [style.background]="color">
+  <label> Message: </label>
+  <input class="inputMessage" [(ngModel)]="message" (keyup.enter)="add()">
+  <button (click)="add()"> Enter </button>
+</div>
+
+<footer id="sticky-footer">
+  <div class="container text-center">
+  </div>
+</footer>
+
